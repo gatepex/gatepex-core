@@ -162,21 +162,23 @@ export default function Sidebar(props) {
                     <Link to="/" className={"link "+(props.page===1?'active':null)}><FontAwesomeIcon icon="fa-solid fa-database" />Databases</Link>
                     {/* APIs */}
                     <Link to="/apis" className={"link "+(props.page===2?'active':null)}><FontAwesomeIcon icon="fa-solid fa-link" />APIs</Link>
+                    {/* Authentication */}
+                    <Link to="/auth" className={"link "+(props.page===9?'active':null)}><FontAwesomeIcon icon="fa-solid fa-user" />Authentication</Link>
                     {/* Function */}
-                    <Link to="/functions" className={"link "+(props.page===3?'active':null)}><FontAwesomeIcon icon="fa-solid fa-file" />Function</Link>
+                    <Link to="/functions" className={"link "+(props.page===3?'active':null)}><FontAwesomeIcon icon="fa-solid fa-file" />Functions</Link>
                     <Divider />
                     <Link to="/logs" className={"link "+(props.page===4?'active':null)}><FontAwesomeIcon icon="fa-solid fa-chart-simple" />Logs</Link>
                     <Divider />
-                    <Link to="/teams" className={"link "+(props.page===5?'active':null)}><FontAwesomeIcon icon="fa-solid fa-user-group" />TEAMS</Link>
-                    <Link to="/Payments" className={"link "+(props.page===6?'active':null)}><FontAwesomeIcon icon="fa-solid fa-receipt" />Payments and billing</Link>
-                    <Link to="/setting" className={"link "+(props.page===7?'active':null)}><FontAwesomeIcon icon="fa-solid fa-gear" />Setting</Link>
+                    <Link to="/team" className={"link "+(props.page===5?'active':null)}><FontAwesomeIcon icon="fa-solid fa-user-group" />TEAM</Link>
+                    <Link to="/Payments" className={"link "+(props.page===6?'active':null)}><FontAwesomeIcon icon="fa-solid fa-receipt" />Payments and billings</Link>
+                    <Link to="/team/settings" className={"link "+(props.page===7?'active':null)}><FontAwesomeIcon icon="fa-solid fa-gear" />Settings</Link>
                 </MenuList>
             </div>
 
             <MenuList>
                 <Divider />
                 <Title>
-                    <span>TEAMS</span>
+                    <span>TEAM</span>
                     <span className='more'>View more</span>
                 </Title>
 
