@@ -158,42 +158,43 @@ export default function Sidebar(props) {
                 <Logo>Gatepex<span>™</span></Logo>
                 <Divider />
                 <MenuList>
+                    {/* home */}
+                    <Link to="/" className={"link "+(props.page===1?'active':null)}><FontAwesomeIcon icon="fa-solid fa-house" />home</Link>
                     {/* Databases */}
-                    <Link to="/" className={"link "+(props.page===1?'active':null)}><FontAwesomeIcon icon="fa-solid fa-database" />Databases</Link>
+                    <Link to="/databases" className={"link "+(props.page===2?'active':null)}><FontAwesomeIcon icon="fa-solid fa-database" />Databases</Link>
                     {/* APIs */}
-                    <Link to="/apis" className={"link "+(props.page===2?'active':null)}><FontAwesomeIcon icon="fa-solid fa-link" />APIs</Link>
+                    <Link to="/apis" className={"link "+(props.page===3?'active':null)}><FontAwesomeIcon icon="fa-solid fa-link" />APIs</Link>
                     {/* Authentication */}
-                    <Link to="/auth" className={"link "+(props.page===9?'active':null)}><FontAwesomeIcon icon="fa-solid fa-user" />Authentication</Link>
+                    <Link to="/auth" className={"link "+(props.page===4?'active':null)}><FontAwesomeIcon icon="fa-solid fa-user" />Authentication</Link>
                     {/* Function */}
-                    <Link to="/functions" className={"link "+(props.page===3?'active':null)}><FontAwesomeIcon icon="fa-solid fa-file" />Functions</Link>
+                    <Link to="/functions" className={"link "+(props.page===5?'active':null)}><FontAwesomeIcon icon="fa-solid fa-file" />Functions</Link>
                     <Divider />
-                    <Link to="/logs" className={"link "+(props.page===4?'active':null)}><FontAwesomeIcon icon="fa-solid fa-chart-simple" />Logs</Link>
+                    <Link to="/logs" className={"link "+(props.page===6?'active':null)}><FontAwesomeIcon icon="fa-solid fa-chart-simple" />Logs</Link>
                     <Divider />
-                    <Link to="/team" className={"link "+(props.page===5?'active':null)}><FontAwesomeIcon icon="fa-solid fa-user-group" />TEAM</Link>
-                    <Link to="/Payments" className={"link "+(props.page===6?'active':null)}><FontAwesomeIcon icon="fa-solid fa-receipt" />Payments and billings</Link>
-                    <Link to="/team/settings" className={"link "+(props.page===7?'active':null)}><FontAwesomeIcon icon="fa-solid fa-gear" />Settings</Link>
+                    <Link to="/project/payments" className={"link "+(props.page===7?'active':null)}><FontAwesomeIcon icon="fa-solid fa-receipt" />Payments and billings</Link>
+                    <Link to="/project/members" className={"link "+(props.page===8?'active':null)}><FontAwesomeIcon icon="fa-solid fa-user-group" />Members</Link>
+                    <Link to="/project/settings" className={"link "+(props.page===9?'active':null)}><FontAwesomeIcon icon="fa-solid fa-gear" />Settings</Link>
                 </MenuList>
             </div>
 
             <MenuList>
                 <Divider />
                 <Title>
-                    <span>TEAM</span>
+                    <span>Project</span>
                     <span className='more'>View more</span>
                 </Title>
 
                 <TeamsList className='active'>
                     <Teams>
-                        Minjun's Teams
+                        Minjun Project
                     </Teams>
-                    <Link to="/teams/settings"><FontAwesomeIcon icon="fa-solid fa-check" /></Link>
+                    <FontAwesomeIcon icon="fa-solid fa-check" />
                 </TeamsList>
 
                 <TeamsList>
                     <Teams>
-                        Test1's Teams
+                        Test1 Project
                     </Teams>
-                    <Link to="/teams/settings"></Link>
                 </TeamsList>
 
                 <Divider />

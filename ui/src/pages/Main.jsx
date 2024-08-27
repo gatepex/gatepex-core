@@ -5,136 +5,152 @@ import GatepexContents from "../components/GatepexContents";
 import Sidebar from "../components/Sidebar";
 import Container from "../components/Container";
 import ContentsHeader from "../components/ContentsHeader";
-import { Button } from 'primereact/button';
 import styled from "styled-components";
-import { IconField } from "primereact/iconfield";
-import { InputIcon } from "primereact/inputicon";
-import { InputText } from "primereact/inputtext";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Divider } from 'primereact/divider';
+import {
+    LineChart,
+    Line,
+    XAxis,
+    YAxis,
+    CartesianGrid,
+    Tooltip,
+    Legend,
+} from "recharts";
 
-const Tools = styled.div`
-  display: flex;
-  gap: 10px;
-  align-items: center;
-
-  svg{
-    vertical-align: 0;
-  }
-`;
-
-const NotDatabases = styled.div`
-  padding: 2rem;
-  border: dashed 1px #00000055;
-  border-radius: 7px;
-  text-align: center;
-
-  .title{
-    font-size: 1.125rem;
-    margin-top: 0;
-    margin-bottom: 0.55rem;
-  }
-
-  .info{
-    margin-top: 0;
-    margin-bottom: 1rem;
-  }
+const Header = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
 `;
 
 const Title = styled.div`
-  margin-top: 2rem;
   font-size: 1.25rem;
   font-weight: 500;
 `;
 
-const DatabaseList = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  width: 100%;
-  flex-direction: column;
-  gap: 15px;
-  margin-top: 1.5rem;
-  margin-bottom: 2rem;
+const Tag = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    background-color: #f5f5f5;
+    color: #000;
+    font-size: 12px;
+    padding: 0.35rem 0.5rem;
+    border-radius: 4px;
+
+    .status{
+        border-radius: 50px;
+        width: 10px;
+        height: 10px;
+    }
+
+    .active{
+        background-color: #22c55e;
+    }
+
+    .stop{
+        background-color: #e11d48;
+    }
+
+    .issue{
+        background-color: #f59e0b;
+    }
 `;
 
-const Database = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #fafafa;
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  padding: 2rem;
-  border-radius: 7px;
-
-  .info{
-    h1{
-      font-weight: 500;
-      font-size: 1.25rem;
-      margin-top: 0;
-      margin-bottom: 5px;
-    }
-    p{
-      font-size: 0.85rem;
-      color: #71717a;
-      font-weight: 400;
-      margin: 0;
-    }
-  }
-`;
+const data = [
+    {
+      name: "Page A",
+      uv: 4000,
+    },
+    {
+      name: "Page B",
+      uv: 3000,
+    },
+    {
+      name: "Page C",
+      uv: 2000,
+    },
+    {
+      name: "Page D",
+      uv: 2780,
+    },
+    {
+      name: "Page E",
+      uv: 1890,
+    },
+    {
+      name: "Page F",
+      uv: 2390,
+    },
+    {
+      name: "Page G",
+      uv: 3490,
+    },
+  ];
 
 const Main = () => {
-  const [databaseList,setDatabaseList] = useState([1]);
+
+  const [width, setWidth] = useState(0);
+  const elementRef = useRef(null);
+
+  useEffect(() => {
+    setWidth(elementRef.current.offsetWidth);
+  }, []);
 
   return (
     <GatepexContents>
-      <Sidebar page={1} />
-      <Container>
+        <Sidebar page={1} />
+        <Container>
+            <ContentsHeader>
+                <span>Home</span>
+            </ContentsHeader>
 
-        <ContentsHeader>
-          <span>Databases</span>
-        </ContentsHeader>
+            <Header>
+                <Title>Minjun Project</Title>
+                <div className='flex gap-2'>
+                    <Tag>
+                        <div className='status stop'></div>
+                        Auth Status
+                    </Tag>
+                    <Tag>
+                        <div className='status issue'></div>
+                        API Status
+                    </Tag>
+                    <Tag>
+                        <div className='status active'></div>
+                        Databases Connect
+                    </Tag>
+                </div>
+            </Header>
 
-        <Tools>
-          <Link to="/connection"><Button label="Connect database" size="small" /></Link>
-          <IconField iconPosition="left">
-            <InputIcon>
-              <FontAwesomeIcon className="text-sm" icon="fa-solid fa-magnifying-glass" />
-            </InputIcon>
-            <InputText className="input-sm w-18rem" v-model="value1" placeholder="Search for a databases" />
-          </IconField>
-        </Tools>
+            <Divider />
 
-        <Title>Connected Databases</Title>
+            <Header>
+                <Title>Auth Status</Title>
+                <div className='flex gap-2'>
+                    <Tag>
+                        <div className='status stop'></div>
+                        Auth Status
+                    </Tag>
+                </div>
+            </Header>
 
-        <DatabaseList>
-          <Database>
-              <div className='info'>
-                <h1>Test Database</h1>
-                <p><span>2024.07.03에 연결됨</span>&bull;<span>MySQL</span>&bull;<span>127.0.0.1</span></p>
-              </div>
-              <Link to="/database">
-                <Button className='gatepex-gray' label="View Database" size="small" />
-              </Link>
-          </Database>
-        </DatabaseList>
-        
-        {
-          databaseList.length === 0&&
-          <NotDatabases>
-            <p className="title">No database</p>
-            <p className="info">Connect and start your database.</p>
-            <Button label="Connect database" size="small" />
-          </NotDatabases>            
-        }
+            <div className='mt-5' ref={elementRef}>
+              <LineChart className='max-w-full' width={width} height={400} data={data}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="name" padding={{ right: 30 }} />
+                <YAxis />
+                <Tooltip />
+                <Legend />
+                <Line type="monotone" dataKey="uv" stroke="#82ca9d" activeDot={{ r: 8 }} />
+              </LineChart>
+            </div>
 
-      </Container>
+        </Container>
     </GatepexContents>
   )
 }
-
-/*
-크래딧으로 가능한것
-- 트래픽 비용
-
-*/
 
 export default Main;

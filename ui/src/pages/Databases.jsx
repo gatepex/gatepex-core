@@ -81,16 +81,16 @@ const Database = styled.div`
   }
 `;
 
-const Apis = () => {
+const Databases = () => {
   const [databaseList,setDatabaseList] = useState([1]);
 
   return (
     <GatepexContents>
-      <Sidebar page={3} />
+      <Sidebar page={2} />
       <Container>
 
         <ContentsHeader>
-          <span>APIs</span>
+          <span>Databases</span>
         </ContentsHeader>
 
         <Tools>
@@ -103,16 +103,16 @@ const Apis = () => {
           </IconField>
         </Tools>
 
-        <Title>APIs</Title>
+        <Title>Connected Databases</Title>
 
         <DatabaseList>
           <Database>
               <div className='info'>
                 <h1>Test Database</h1>
-                <p><span>2024.07.03에 생성됨</span></p>
+                <p><span>2024.07.03에 연결됨</span>&bull;<span>MySQL</span>&bull;<span>127.0.0.1</span></p>
               </div>
               <Link to="/database">
-                <Button className='gatepex-gray' label="Edit" size="small" />
+                <Button className='gatepex-gray' label="View Database" size="small" />
               </Link>
           </Database>
         </DatabaseList>
@@ -131,4 +131,4 @@ const Apis = () => {
   )
 }
 
-export default Apis;
+export default Databases;
